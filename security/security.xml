@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--This for creating user groups-->
+    <record model="ir.module.category" id="order_history">
+        <field name="name">Order History</field>
+        <field name="description">Category for Order History</field>
+        <field name="sequence">10</field>
+    </record>
+    <record id="order_history_user_access" model="res.groups">
+        <field name="name">User</field>
+        <field name="category_id" ref="order_history"/>
+    </record>
+    <record id="order_history_manager_access" model="res.groups">
+        <field name="name">Manager</field>
+        <field name="category_id" ref="order_history"/>
+        <field name="implied_ids"
+               eval="[(4,ref('order_history_user_access'))]"/>
+    </record>
+</odoo>
